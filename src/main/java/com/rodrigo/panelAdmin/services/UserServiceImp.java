@@ -4,12 +4,14 @@ import com.google.common.hash.Hashing;
 import com.rodrigo.panelAdmin.entities.User;
 import com.rodrigo.panelAdmin.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class UserServiceImp implements UserService{
     private static final String SECRET_KEY = "gj43jng9";
     @Autowired
