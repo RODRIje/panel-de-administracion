@@ -6,6 +6,7 @@ import com.rodrigo.panelAdmin.repository.UserRepository;
 import com.rodrigo.panelAdmin.services.AuthService;
 import com.rodrigo.panelAdmin.services.AuthServiceImp;
 import com.rodrigo.panelAdmin.services.UserService;
+import com.rodrigo.panelAdmin.utils.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,11 +19,12 @@ public class AuthController {
 
     @Autowired
     private AuthServiceImp authService;
+
     @GetMapping("/auth/login")
-    public User login(@RequestBody RequestLogin request){
+    public String login(@RequestBody RequestLogin request){
         String email = request.getEmail();
         String password = request.getPassword();
         User user = authService.login(email, password);
-        return user;
+        return JwtUtil.generateToken(user);
     }
 }
