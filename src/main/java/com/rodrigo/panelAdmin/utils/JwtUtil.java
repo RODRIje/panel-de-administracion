@@ -35,7 +35,7 @@ public class JwtUtil {
                 .build();
 
         DecodedJWT decoded = verifier.verify(token);
-        String userId = decoded.getClaim("userId").asString();
+        String userId = decoded.getClaim("userId").toString();
         return  userId;
     }
 }
